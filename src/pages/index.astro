@@ -1,11 +1,243 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const sections = [
+  {
+    title: "Herramientas",
+    description: "Calculadoras útiles, conversores y utilidades rápidas.",
+    url: "/tools/calculadora-porcentaje",
+    badge: "Más usada"
+  },
+  {
+    title: "Educación",
+    description: "Recursos para estudiantes, matemáticas y apoyo escolar.",
+    url: "/education",
+    badge: "Próximamente"
+  },
+  {
+    title: "Gaming",
+    description: "Herramientas para jugadores, guías y calculadoras.",
+    url: "/gaming",
+    badge: "Próximamente"
+  },
+  {
+    title: "Perú",
+    description: "Utilidades y recursos pensados para usuarios en Perú.",
+    url: "/peru",
+    badge: "Próximamente"
+  }
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unsol Tools | Herramientas útiles online</title>
+    <meta
+      name="description"
+      content="Portal de herramientas útiles, educación, gaming y recursos para Perú."
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: rgba(255,255,255,0.08);
+        --card2: rgba(255,255,255,0.12);
+        --text: #e5eefc;
+        --muted: #a7b3cc;
+        --accent: #7c3aed;
+        --accent2: #22c55e;
+        --border: rgba(255,255,255,0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(124,58,237,0.35), transparent 40%),
+          radial-gradient(circle at bottom right, rgba(34,197,94,0.18), transparent 35%),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .hero {
+        padding: 56px 0 28px;
+      }
+
+      .kicker {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255,255,255,0.05);
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 6vw, 4.6rem);
+        line-height: 1.02;
+        margin: 0 0 16px;
+        letter-spacing: -0.04em;
+      }
+
+      .lead {
+        max-width: 720px;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0 0 28px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        transition: transform 0.18s ease, background 0.18s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), #4f46e5);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: rgba(255,255,255,0.06);
+        color: var(--text);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+        margin-top: 30px;
+      }
+
+      .card {
+        grid-column: span 6;
+        padding: 22px;
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.04));
+        box-shadow: 0 20px 50px rgba(0,0,0,0.22);
+        backdrop-filter: blur(10px);
+      }
+
+      .card:hover {
+        background: linear-gradient(180deg, var(--card2), rgba(255,255,255,0.06));
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 0.82rem;
+        color: #d6dcff;
+        background: rgba(124,58,237,0.22);
+        border: 1px solid rgba(124,58,237,0.35);
+        padding: 6px 10px;
+        border-radius: 999px;
+        margin-bottom: 14px;
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.45rem;
+      }
+
+      .card p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .card a {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .feature {
+        margin-top: 34px;
+        padding: 22px;
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.05);
+      }
+
+      .feature h3 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      @media (max-width: 800px) {
+        .card {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Unsol Tools · utilidades online</span>
+        <h1>Herramientas útiles, rápidas y sin ruido.</h1>
+        <p class="lead">
+          Un portal ligero con calculadoras, utilidades y recursos prácticos para estudiantes, gamers y usuarios en Perú.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/tools/calculadora-porcentaje">Abrir calculadora</a>
+          <a class="btn btn-secondary" href="#secciones">Ver secciones</a>
+        </div>
+      </section>
+
+      <section id="secciones" class="grid">
+        {sections.map((section) => (
+          <article class="card">
+            <div class="badge">{section.badge}</div>
+            <h2>{section.title}</h2>
+            <p>{section.description}</p>
+            <a href={section.url}>Entrar →</a>
+          </article>
+        ))}
+      </section>
+
+      <section class="feature">
+        <h3>Primera herramienta disponible</h3>
+        <p>
+          Ya puedes usar la calculadora de porcentaje. Después añadimos más herramientas y cada una tendrá su propia página optimizada.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

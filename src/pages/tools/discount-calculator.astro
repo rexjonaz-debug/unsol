@@ -1,0 +1,553 @@
+---
+const title="Discount Calculator – Calculate Sale Prices, Savings & Percentage Off Instantly";
+const description="Free discount calculator. Calculate sale prices, savings, taxes and multiple discounts instantly.";
+---
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>{title}</title>
+
+<meta name="description" content={description}>
+
+<style>
+
+:root{
+
+--bg:#08111f;
+
+--card:rgba(255,255,255,.07);
+
+--blue:#4f8cff;
+
+--purple:#8b5cf6;
+
+--green:#32d583;
+
+}
+
+*{
+
+box-sizing:border-box;
+
+}
+
+body{
+
+margin:0;
+
+font-family:system-ui;
+
+background:
+linear-gradient(
+135deg,
+#08111f,
+#0e1730,
+#111827
+);
+
+background-size:400%;
+
+animation:bg 15s infinite alternate;
+
+color:white;
+
+}
+
+@keyframes bg{
+
+0%{background-position:left}
+
+100%{background-position:right}
+
+}
+
+.container{
+
+max-width:1400px;
+
+margin:auto;
+
+padding:40px 20px;
+
+}
+
+.hero{
+
+text-align:center;
+
+padding:40px 0;
+
+animation:fade .8s ease;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px)
+
+}
+
+to{
+
+opacity:1;
+
+transform:none
+
+}
+
+}
+
+.hero h1{
+
+font-size:3rem;
+
+margin:0;
+
+}
+
+.hero p{
+
+opacity:.8;
+
+font-size:1.1rem;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:20px;
+
+margin:40px 0;
+
+}
+
+.stat{
+
+background:var(--card);
+
+padding:25px;
+
+border-radius:22px;
+
+backdrop-filter:blur(14px);
+
+text-align:center;
+
+transition:.25s;
+
+}
+
+.stat:hover{
+
+transform:translateY(-6px);
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(330px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+background:var(--card);
+
+padding:30px;
+
+border-radius:24px;
+
+backdrop-filter:blur(18px);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+input{
+
+width:100%;
+
+padding:16px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:14px;
+
+background:#16233f;
+
+color:white;
+
+font-size:1rem;
+
+outline:none;
+
+}
+
+input:focus{
+
+box-shadow:0 0 15px rgba(79,140,255,.5);
+
+}
+
+button{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+cursor:pointer;
+
+font-weight:bold;
+
+border-radius:14px;
+
+background:
+
+linear-gradient(
+90deg,
+var(--blue),
+var(--purple)
+);
+
+color:white;
+
+font-size:1rem;
+
+transition:.2s;
+
+}
+
+button:hover{
+
+transform:scale(1.02);
+
+}
+
+.result{
+
+font-size:2rem;
+
+margin-top:20px;
+
+color:var(--green);
+
+font-weight:bold;
+
+min-height:45px;
+
+animation:fade .4s;
+
+}
+
+.content{
+
+margin-top:80px;
+
+line-height:1.8;
+
+opacity:.95;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+<h1>
+
+Discount Calculator
+
+</h1>
+
+<p>
+
+Calculate discounts, savings, taxes and sale prices instantly.
+
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<h2>Instant</h2>
+
+<p>Results</p>
+
+</div>
+
+<div class="stat">
+
+<h2>4 Tools</h2>
+
+<p>Included</p>
+
+</div>
+
+<div class="stat">
+
+<h2>Free</h2>
+
+<p>Forever</p>
+
+</div>
+
+<div class="stat">
+
+<h2>Modern</h2>
+
+<p>Calculator</p>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h3>
+
+Sale Price
+
+</h3>
+
+<input id=p1 type=number step=any placeholder="Original Price">
+
+<input id=d1 type=number step=any placeholder="Discount %">
+
+<button id=b1>
+
+Calculate
+
+</button>
+
+<div id=r1 class=result></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Find Discount %
+
+</h3>
+
+<input id=o2 type=number step=any placeholder="Original Price">
+
+<input id=s2 type=number step=any placeholder="Sale Price">
+
+<button id=b2>
+
+Calculate
+
+</button>
+
+<div id=r2 class=result></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Multiple Discounts
+
+</h3>
+
+<input id=m1 type=number step=any placeholder="Price">
+
+<input id=m2 type=number step=any placeholder="First Discount">
+
+<input id=m3 type=number step=any placeholder="Second Discount">
+
+<button id=b3>
+
+Calculate
+
+</button>
+
+<div id=r3 class=result></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+
+Discount + Tax
+
+</h3>
+
+<input id=t1 type=number step=any placeholder="Price">
+
+<input id=t2 type=number step=any placeholder="Discount %">
+
+<input id=t3 type=number step=any placeholder="Tax %">
+
+<button id=b4>
+
+Calculate
+
+</button>
+
+<div id=r4 class=result></div>
+
+</div>
+
+</div>
+
+
+<div class="content">
+
+<h2>
+
+How Discount Calculators Work
+
+</h2>
+
+<p>
+
+Use this tool to calculate sale prices, discounts, taxes and savings instantly.
+
+</p>
+
+
+<h2>
+
+Examples
+
+</h2>
+
+<p>
+
+100 with 20% off = 80
+
+</p>
+
+<p>
+
+100 with 20% and then 10% off = 72
+
+</p>
+
+
+<h2>
+
+FAQ
+
+</h2>
+
+<p>
+
+Can I calculate taxes?
+
+Yes.
+
+Can I calculate stacked discounts?
+
+Yes.
+
+</p>
+
+</div>
+
+</div>
+
+<script is:inline>
+
+const N=id=>parseFloat(document.getElementById(id).value)||0;
+
+const S=(id,v)=>document.getElementById(id).textContent=v;
+
+b1.onclick=()=>{
+
+let r=N("p1")*(1-N("d1")/100);
+
+S("r1","$"+r.toFixed(2));
+
+}
+
+b2.onclick=()=>{
+
+let r=((N("o2")-N("s2"))/N("o2"))*100;
+
+S("r2",r.toFixed(2)+"%");
+
+}
+
+b3.onclick=()=>{
+
+let p=N("m1");
+
+p*=1-N("m2")/100;
+
+p*=1-N("m3")/100;
+
+S("r3","$"+p.toFixed(2));
+
+}
+
+b4.onclick=()=>{
+
+let p=N("t1");
+
+p*=1-N("t2")/100;
+
+p*=1+N("t3")/100;
+
+S("r4","$"+p.toFixed(2));
+
+}
+
+</script>
+
+</body>
+
+</html>
+

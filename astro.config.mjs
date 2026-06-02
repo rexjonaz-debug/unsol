@@ -4,9 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
 
-site: 'https://unsol-pe.top',
+site:"https://unsol-pe.top",
 
-integrations: [
+integrations:[
 
 sitemap()
 

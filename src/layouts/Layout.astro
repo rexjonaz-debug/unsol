@@ -1,23 +1,95 @@
-<!doctype html>
+---
+const {
+
+title="Unsol",
+
+description="Useful online tools",
+
+canonical="https://unsol-pe.top",
+
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+
+<link rel="canonical" href={canonical} />
+
+<meta name="robots" content="index,follow,max-image-preview:large" />
+
+<meta property="og:title" content={title} />
+
+<meta property="og:description" content={description} />
+
+<meta property="og:type" content="website" />
+
+<meta property="og:url" content={canonical} />
+
+<meta name="twitter:card" content="summary_large_image" />
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+
+:root{
+
+--bg:#0b1020;
+
+--card:#151d36;
+
+--accent:#5eead4;
+
+--accent2:#7c3aed;
+
+--text:#fff;
+
+}
+
+body{
+
+margin:0;
+
+font-family:Inter,Arial,sans-serif;
+
+background:
+
+radial-gradient(circle at top left,#172554,#0b1020);
+
+color:white;
+
+}
+
+main{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:30px;
+
+}
+
 </style>
+
+</head>
+
+<body>
+
+<main>
+
+<slot />
+
+</main>
+
+</body>
+
+</html>

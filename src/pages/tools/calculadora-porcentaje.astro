@@ -1,254 +1,30 @@
 ---
-const title="Percentage Calculator (Free) – Calculate Percentages, Discounts & Changes Instantly";
-const description="Free online percentage calculator. Calculate discounts, percentage increases, decreases, price changes and percentages instantly.";
+import Layout from '../../layouts/Layout.astro';
+
+const title =
+"Advanced Percentage Calculator (Free) – Calculate Percentages, Discounts & Increases";
+
+const description =
+"Free advanced percentage calculator. Calculate discounts, increases, decreases, taxes, savings and percentage values instantly.";
 ---
 
-<html lang="en">
+<Layout
 
-<head>
+title={title}
 
-<meta charset="UTF-8">
+description={description}
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+canonical="https://unsol-pe.top/tools/calculadora-porcentaje/"
 
-<title>{title}</title>
+>
 
-<meta name="description" content={description}>
+<section class="hero">
 
-<style>
+<div class="badge">
 
-:root{
+FREE ONLINE TOOL
 
---bg:#08111f;
---card:rgba(255,255,255,.06);
-
---blue:#3b82f6;
-
---purple:#8b5cf6;
-
---green:#22c55e;
-
-}
-
-*{
-
-box-sizing:border-box;
-
-}
-
-body{
-
-margin:0;
-
-font-family:
-
-system-ui;
-
-background:
-
-linear-gradient(
-135deg,
-#07111f,
-#101827,
-#0b1220
-);
-
-color:white;
-
-}
-
-.container{
-
-max-width:1400px;
-
-margin:auto;
-
-padding:40px 20px;
-
-}
-
-.hero{
-
-text-align:center;
-
-padding:40px 0;
-
-}
-
-.hero h1{
-
-font-size:3.3rem;
-
-margin:0;
-
-}
-
-.hero p{
-
-opacity:.8;
-
-font-size:1.1rem;
-
-}
-
-.stats{
-
-display:grid;
-
-grid-template-columns:
-
-repeat(auto-fit,minmax(200px,1fr));
-
-gap:20px;
-
-margin:40px 0;
-
-}
-
-.stat{
-
-background:var(--card);
-
-padding:28px;
-
-border-radius:22px;
-
-backdrop-filter:blur(14px);
-
-text-align:center;
-
-}
-
-.stat span{
-
-font-size:2rem;
-
-font-weight:bold;
-
-display:block;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:
-
-repeat(auto-fit,minmax(330px,1fr));
-
-gap:25px;
-
-}
-
-.card{
-
-background:var(--card);
-
-padding:28px;
-
-border-radius:24px;
-
-backdrop-filter:blur(15px);
-
-transition:.25s;
-
-}
-
-.card:hover{
-
-transform:
-translateY(-6px);
-
-}
-
-.card h3{
-
-margin-top:0;
-
-}
-
-input{
-
-width:100%;
-
-padding:16px;
-
-margin:10px 0;
-
-border:none;
-
-border-radius:14px;
-
-background:#1c2842;
-
-color:white;
-
-font-size:1rem;
-
-}
-
-button{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-cursor:pointer;
-
-font-size:1rem;
-
-font-weight:bold;
-
-border-radius:14px;
-
-background:
-
-linear-gradient(
-90deg,
-var(--blue),
-var(--purple)
-);
-
-color:white;
-
-}
-
-.result{
-
-margin-top:20px;
-
-font-size:2rem;
-
-font-weight:bold;
-
-color:var(--green);
-
-min-height:45px;
-
-}
-
-.content{
-
-margin-top:80px;
-
-line-height:1.9;
-
-opacity:.95;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="hero">
+</div>
 
 <h1>
 
@@ -258,153 +34,113 @@ Advanced Percentage Calculator
 
 <p>
 
-Calculate percentages, discounts, growth and percentage changes instantly.
+Calculate percentages, discounts, increases,
+
+decreases, taxes and savings instantly.
+
+Fast, modern and completely free.
 
 </p>
 
-</div>
+</section>
 
-
-<div class="stats">
-
-<div class="stat">
-
-<span>4</span>
-
-Powerful Tools
-
-</div>
-
-<div class="stat">
-
-<span>100%</span>
-
-Free
-
-</div>
-
-<div class="stat">
-
-<span>Fast</span>
-
-Instant Results
-
-</div>
-
-</div>
-
-
-<div class="grid">
+<section class="calculator">
 
 <div class="card">
 
-<h3>
+<h2>
 
-What % is X of Y?
+Percentage Calculator
 
-</h3>
+</h2>
 
-<input id=a1 type=number step=any placeholder="Value">
+<div class="inputs">
 
-<input id=b1 type=number step=any placeholder="Total">
+<input
 
-<button id=btn1>
+id="num"
+
+type="number"
+
+inputmode="decimal"
+
+placeholder="Enter number"
+
+/>
+
+<input
+
+id="percent"
+
+type="number"
+
+inputmode="decimal"
+
+placeholder="Enter percentage"
+
+/>
+
+</div>
+
+<button onclick="calculate()">
 
 Calculate Percentage
 
 </button>
 
-<div id=r1 class=result></div>
+<div id="result">
 
-</div>
-
-
-<div class="card">
-
-<h3>
-
-What is X% of Y?
-
-</h3>
-
-<input id=a2 type=number step=any placeholder="%">
-
-<input id=b2 type=number step=any placeholder="Number">
-
-<button id=btn2>
-
-Calculate Result
-
-</button>
-
-<div id=r2 class=result></div>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-
-Increase by %
-
-</h3>
-
-<input id=a3 type=number step=any placeholder="Value">
-
-<input id=b3 type=number step=any placeholder="%">
-
-<button id=btn3>
-
-Calculate Increase
-
-</button>
-
-<div id=r3 class=result></div>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-
-Discount Calculator
-
-</h3>
-
-<input id=a4 type=number step=any placeholder="Price">
-
-<input id=b4 type=number step=any placeholder="Discount %">
-
-<button id=btn4>
-
-Calculate Discount
-
-</button>
-
-<div id=r4 class=result></div>
+Result appears here
 
 </div>
 
 </div>
 
+</section>
 
-
-<div class="content">
+<section class="content">
 
 <h2>
 
-How To Use This Percentage Calculator
+What is a percentage?
 
 </h2>
 
 <p>
 
-Enter your numbers above and calculate percentages instantly.
+Percentages represent proportions out of 100.
+
+Businesses, ecommerce, taxes, salaries,
+
+shopping discounts and financial reports
+
+depend heavily on percentage calculations.
 
 </p>
 
+<h2>
+
+Common Uses
+
+</h2>
+
+<ul>
+
+<li>Shopping discounts</li>
+
+<li>Salary increases</li>
+
+<li>Tax calculations</li>
+
+<li>Business analytics</li>
+
+<li>School grades</li>
+
+<li>Financial reports</li>
+
+<li>Investments</li>
+
+</ul>
 
 <h2>
 
@@ -414,16 +150,21 @@ Examples
 
 <p>
 
-20 is what percent of 100 = 20%
+20% of 500 = 100
 
 </p>
 
 <p>
 
-30% discount on 100 = 70
+15% discount on 1000 = 850
 
 </p>
 
+<p>
+
+10% salary increase on 2000 = 2200
+
+</p>
 
 <h2>
 
@@ -431,90 +172,298 @@ Frequently Asked Questions
 
 </h2>
 
+<h3>
+
+How do you calculate percentages?
+
+</h3>
+
 <p>
 
-Can I calculate discounts?
-
-Yes.
-
-Can I calculate percentage increases?
-
-Yes.
+Multiply the value by the percentage and divide by 100.
 
 </p>
 
+<h3>
+
+Can percentages exceed 100%?
+
+</h3>
+
+<p>
+
+Yes. Growth metrics, returns and statistics frequently exceed 100%.
+
+</p>
+
+<h3>
+
+How are discounts calculated?
+
+</h3>
+
+<p>
+
+Subtract the discount amount from the original price.
+
+</p>
+
+<h3>
+
+Why percentages matter?
+
+</h3>
+
+<p>
+
+Percentages make comparisons easier across different values.
+
+</p>
+
+<h2>
+
+Why use this calculator?
+
+</h2>
+
+<p>
+
+This tool provides fast calculations without complicated spreadsheets,
+
+making it ideal for students, businesses, shopping and finance.
+
+</p>
+
+</section>
+
+<script>
+
+window.calculate=()=>{
+
+const a=parseFloat(
+
+document.getElementById("num").value
+
+);
+
+const b=parseFloat(
+
+document.getElementById("percent").value
+
+);
+
+const result=document.getElementById("result");
+
+if(isNaN(a)||isNaN(b)){
+
+result.innerHTML=
+
+"Please enter valid numbers";
+
+return;
+
+}
+
+const r=(a*b)/100;
+
+result.innerHTML=`
+
+<div class="big">
+
+${r.toLocaleString()}
+
 </div>
 
+<div>
+
+${b}% of ${a}
+
 </div>
 
-
-<script is:inline>
-
-function n(id){
-
-return parseFloat(
-
-document.getElementById(id).value
-
-)||0
-
-}
-
-function s(id,val){
-
-document.getElementById(id)
-
-.textContent=val
-
-}
-
-btn1.onclick=()=>{
-
-s("r1",
-
-((n("a1")/n("b1"))*100)
-
-.toFixed(2)+"%")
-
-}
-
-btn2.onclick=()=>{
-
-s("r2",
-
-((n("a2")*n("b2"))/100)
-
-.toFixed(2))
-
-}
-
-btn3.onclick=()=>{
-
-s("r3",
-
-(n("a3")*(1+n("b3")/100))
-
-.toFixed(2))
-
-}
-
-btn4.onclick=()=>{
-
-s("r4",
-
-(
-
-n("a4")-
-
-n("a4")*n("b4")/100
-
-).toFixed(2))
+`;
 
 }
 
 </script>
 
-</body>
+<style>
 
-</html>
+.hero{
 
+text-align:center;
+
+padding:60px 20px;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:#1e293b;
+
+margin-bottom:20px;
+
+font-size:14px;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+margin:0;
+
+}
+
+.hero p{
+
+max-width:700px;
+
+margin:auto;
+
+font-size:20px;
+
+opacity:.9;
+
+}
+
+.calculator{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.card{
+
+width:min(900px,100%);
+
+padding:35px;
+
+border-radius:28px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#172554,
+
+#111827
+
+);
+
+box-shadow:
+
+0 0 80px rgba(0,0,0,.35);
+
+}
+
+.inputs{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+margin-bottom:20px;
+
+}
+
+input{
+
+padding:20px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:18px;
+
+}
+
+button{
+
+width:100%;
+
+padding:22px;
+
+border:none;
+
+font-size:22px;
+
+cursor:pointer;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#22d3ee,
+
+#8b5cf6
+
+);
+
+}
+
+#result{
+
+margin-top:30px;
+
+text-align:center;
+
+font-size:22px;
+
+}
+
+.big{
+
+font-size:54px;
+
+font-weight:bold;
+
+}
+
+.content{
+
+max-width:900px;
+
+margin:auto;
+
+padding:60px 10px;
+
+line-height:1.9;
+
+}
+
+@media(max-width:700px){
+
+.inputs{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+}
+
+</style>
+
+</Layout>

@@ -1,0 +1,144 @@
+---
+const games = [
+  {
+    title: "Neon Survivor",
+    url: "/games/neon-survivor/",
+    description:
+      "Cyberpunk survival shooter with upgrades, enemies, meteors and endless gameplay.",
+    badge: "Featured"
+  }
+];
+---
+
+<html lang="en">
+<head>
+
+<title>Play Free Online Games | UNSOL</title>
+
+<meta
+name="description"
+content="Play free browser games online. Action, survival, arcade and strategy games with no download required."
+/>
+
+<link
+rel="canonical"
+href="https://unsol-pe.top/games/"
+/>
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1"
+/>
+
+<style>
+
+body{
+margin:0;
+background:#09090f;
+font-family:system-ui;
+color:white;
+}
+
+.hero{
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+font-size:1.2rem;
+opacity:.8;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+padding:50px;
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+background:#111827;
+border-radius:24px;
+padding:30px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.badge{
+display:inline-block;
+background:#7c3aed;
+padding:6px 12px;
+border-radius:999px;
+font-size:.8rem;
+margin-bottom:15px;
+}
+
+a{
+color:white;
+text-decoration:none;
+}
+
+.play{
+display:inline-block;
+margin-top:20px;
+padding:14px 24px;
+background:#2563eb;
+border-radius:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>Play Free Online Games</h1>
+
+<p>
+Discover browser games, survival adventures,
+action shooters and arcade experiences.
+No downloads required.
+</p>
+
+</section>
+
+<div class="grid">
+
+{
+games.map(game => (
+
+<div class="card">
+
+<div class="badge">{game.badge}</div>
+
+<h2>{game.title}</h2>
+
+<p>{game.description}</p>
+
+<a class="play" href={game.url}>
+Play Now
+</a>
+
+</div>
+
+))
+}
+
+</div>
+
+</body>
+</html>
